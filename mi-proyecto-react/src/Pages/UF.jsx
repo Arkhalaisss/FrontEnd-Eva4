@@ -2,17 +2,15 @@ import { useState, useEffect } from 'react'
 
 function Uf() {
   const [fechasDisponibles, setFechasDisponibles] = useState([])
-  const [selectedFecha, setSelectedFecha] = useState('')
-  const [valorUf, setValorUf] = useState(null)
+  const [fechaSeleccionada, setSeleccionarFecha] = useState('')
+  const [valor, setValor] = useState(null)
   const [error, setError] = useState('')
-  // Al cargar, obtener las fechas disponibles desde la API
   useEffect(() => {
     const cargarFechas = async () => {
       try {
         const res = await fetch('https://mindicador.cl/api/uf')
         const json = await res.json()
         if (json?.serie?.length > 0) {
-          // Extrae solo las fechas en formato yyyy-mm-dd
           const fechas = json.serie.map((item) => ({
             fecha: item.fecha.split('T')[0],
             valor: item.valor,
@@ -30,13 +28,13 @@ function Uf() {
   }, [])
   const manejarSeleccion = (e) => {
     const fecha = e.target.value
-    setSelectedFecha(fecha)
+    setSeleccionarFecha(fecha)
     const dato = fechasDisponibles.find((f) => f.fecha === fecha)
     if (dato) {
-      setValorUf(dato.valor)
+      setValor(dato.valor)
       setError('')
     } else {
-      setValorUf(null)
+      setValor(null)
       setError('No se encontró el valor para esa fecha')
     }
   }
@@ -46,7 +44,7 @@ function Uf() {
       {fechasDisponibles.length > 0 ? (
         <div className="mb-3">
           <label className="form-label">Selecciona una fecha:</label>
-          <select className="form-select" onChange={manejarSeleccion} value={selectedFecha}>
+          <select className="form-select" onChange={manejarSeleccion} value={fechaSeleccionada}>
             <option value="">-- Selecciona una fecha --</option>
             {fechasDisponibles.map((f) => (
               <option key={f.fecha} value={f.fecha}>
@@ -59,10 +57,10 @@ function Uf() {
         <p>Cargando fechas disponibles...</p>
       )}
       {error && <div className="alert alert-warning mt-3">{error}</div>}
-      {valorUf && selectedFecha && (
+      {valor && fechaSeleccionada && (
         <div className="alert alert-success mt-3">
-          <strong>Fecha:</strong> {selectedFecha} <br />
-          <strong>Valor UF:</strong> ${valorUf.toLocaleString('es-CL')}
+          <strong>Fecha:</strong> {fechaSeleccionada} <br />
+          <strong>Valor UF (Pesos Chilenos):</strong> ${valor.toLocaleString('es-CL')}
         </div>
       )}
     </div>

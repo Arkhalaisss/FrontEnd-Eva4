@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 
 function Euro() {
   const [fechasDisponibles, setFechasDisponibles] = useState([])
-  const [selectedFecha, setSelectedFecha] = useState('')
-  const [valorUf, setValorUf] = useState(null)
+  const [fechaSeleccionada, setSeleccionarFecha] = useState('')
+  const [valor, setValor] = useState(null)
   const [error, setError] = useState('')
   useEffect(() => {
     const cargarFechas = async () => {
@@ -28,13 +28,13 @@ function Euro() {
   }, [])
   const manejarSeleccion = (e) => {
     const fecha = e.target.value
-    setSelectedFecha(fecha)
+    setSeleccionarFecha(fecha)
     const dato = fechasDisponibles.find((f) => f.fecha === fecha)
     if (dato) {
-      setValorUf(dato.valor)
+      setValor(dato.valor)
       setError('')
     } else {
-      setValorUf(null)
+      setValor(null)
       setError('No se encontró el valor para esa fecha')
     }
   }
@@ -44,7 +44,7 @@ function Euro() {
       {fechasDisponibles.length > 0 ? (
         <div className="mb-3">
           <label className="form-label">Selecciona una fecha:</label>
-          <select className="form-select" onChange={manejarSeleccion} value={selectedFecha}>
+          <select className="form-select" onChange={manejarSeleccion} value={fechaSeleccionada}>
             <option value="">-- Selecciona una fecha --</option>
             {fechasDisponibles.map((f) => (
               <option key={f.fecha} value={f.fecha}>
@@ -57,10 +57,10 @@ function Euro() {
         <p>Cargando fechas disponibles...</p>
       )}
       {error && <div className="alert alert-warning mt-3">{error}</div>}
-      {valorUf && selectedFecha && (
+      {valor && fechaSeleccionada && (
         <div className="alert alert-success mt-3">
-          <strong>Fecha:</strong> {selectedFecha} <br />
-          <strong>Valor Euro:</strong> ${valorUf.toLocaleString('es-CL')}
+          <strong>Fecha:</strong> {fechaSeleccionada} <br />
+          <strong>Valor Euro (Pesos Chilenos):</strong> ${valor.toLocaleString('es-CL')}
         </div>
       )}
     </div>
