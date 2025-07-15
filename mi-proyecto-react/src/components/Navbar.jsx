@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
       <Link className="navbar-brand" to="/">Indicadores Económicos</Link>
       <div className="navbar-nav">
-        <Link className="nav-link" to="/uf">UF</Link>
+        <Link className="nav-link" to="/Consultor_UF">UF</Link>
         <Link className="nav-link" to="/ivp">IVP</Link>
         <Link className="nav-link" to="/ipc">IPC</Link>
         <Link className="nav-link" to="/utm">UTM</Link>
