@@ -1,26 +1,31 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-import Uf from './pages/Uf';
+import Uf from './Pages/UF';
 import Inicio from './Pages/Inicio';
+import Ivp from './Pages/Ivp';
+import Ipc from './Pages/Ipc';
+import Utm from './Pages/UTM';
+import Dolar from './Pages/Dolar';
+import Euro from './Pages/Euro';
 
 export default function App() {
   return (
-    <Router>
+    <>
       <Navbar />
-        <Inicio />
       <main className="container my-4">
+        <Inicio />
         <Routes>
-          <Route path="/uf" element={<Uf />} />
-          <Route path="/ivp" element={<Ivp />} />
-          <Route path="/ipc" element={<Ipc />} />
-          <Route path="/utm" element={<Utm />} />
-          <Route path="/dolar" element={<Dolar />} />
-          <Route path="/euro" element={<Euro />} />
+           <Route path="/UF" element={<Uf />} />
+          <Route path="/Ivp" element={<Ivp />} />
+          <Route path="/Ipc" element={<Ipc />} />
+          <Route path="/UTM" element={<Utm />} />
+          <Route path="/Dolar" element={<Dolar />} />
+          <Route path="/Euro" element={<Euro />} />
         </Routes>
       </main>
       <Footer />
-    </Router>
+    </>
   );
 }

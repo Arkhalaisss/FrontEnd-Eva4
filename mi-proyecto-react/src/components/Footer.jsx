@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <footer className="text-center p-3 bg-light mt-4">
-      Desarrollado por: [Tu Nombre Completo]
+    <footer className="container fluid text-center p-3 bg-light mt-4">
+      Desarrollado por: Sebastian Vargas Hernandez
     </footer>
   );
 }

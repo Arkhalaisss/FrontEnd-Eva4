@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react'
 
-function Uf() {
+function Ivp() {
   const [fechasDisponibles, setFechasDisponibles] = useState([])
   const [selectedFecha, setSelectedFecha] = useState('')
   const [valorUf, setValorUf] = useState(null)
   const [error, setError] = useState('')
-  // Al cargar, obtener las fechas disponibles desde la API
   useEffect(() => {
     const cargarFechas = async () => {
       try {
-        const res = await fetch('https://mindicador.cl/api/uf')
+        const res = await fetch('https://mindicador.cl/api/IPV')
         const json = await res.json()
         if (json?.serie?.length > 0) {
-          // Extrae solo las fechas en formato yyyy-mm-dd
           const fechas = json.serie.map((item) => ({
             fecha: item.fecha.split('T')[0],
             valor: item.valor,
@@ -42,7 +40,7 @@ function Uf() {
   }
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Consulta de UF (solo fechas con datos)</h2>
+      <h2 className="mb-4">Consulta de IPV (solo fechas con datos)</h2>
       {fechasDisponibles.length > 0 ? (
         <div className="mb-3">
           <label className="form-label">Selecciona una fecha:</label>
@@ -62,11 +60,11 @@ function Uf() {
       {valorUf && selectedFecha && (
         <div className="alert alert-success mt-3">
           <strong>Fecha:</strong> {selectedFecha} <br />
-          <strong>Valor UF:</strong> ${valorUf.toLocaleString('es-CL')}
+          <strong>Valor IPV:</strong> ${valorUf.toLocaleString('es-CL')}
         </div>
       )}
     </div>
   )
 }
 
-export default Uf
+export default Ivp
