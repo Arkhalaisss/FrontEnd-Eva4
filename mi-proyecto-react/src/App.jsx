@@ -14,7 +14,7 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <main className="container my-4">
+      <main className="my-5">
         <Routes>
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/UF" element={<Uf />} />

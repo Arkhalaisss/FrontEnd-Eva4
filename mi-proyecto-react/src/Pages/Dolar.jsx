@@ -40,7 +40,7 @@ function Dolar() {
   }
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Consulta de Dolar (solo fechas con datos)</h2>
+      <h2 className="mb-4">Consulta de Dolar</h2>
       {fechasDisponibles.length > 0 ? (
         <div className="mb-3">
           <label className="form-label">Selecciona una fecha:</label>
@@ -60,7 +60,7 @@ function Dolar() {
       {valor && fechaSeleccionada && (
         <div className="alert alert-success mt-3">
           <strong>Fecha:</strong> {fechaSeleccionada} <br />
-          <strong>Valor Dolar:</strong> ${valor.toLocaleString('es-CL')}
+          <strong>Valor Dolar (Pesos Chilenos):</strong> ${valor.toLocaleString('es-CL')}
         </div>
       )}
     </div>

@@ -40,10 +40,10 @@ function Utm() {
   }
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Consulta de UTM (solo fechas con datos)</h2>
+      <h2 className="mb-4">Consulta de UTM</h2>
       {fechasDisponibles.length > 0 ? (
         <div className="mb-3">
-          <label className="form-label">Selecciona una fecha:</label>
+          <label className="form-label">Selecciona una fecha :</label>
           <select className="form-select" onChange={manejarSeleccion} value={fechaSeleccionada}>
             <option value="">-- Selecciona una fecha --</option>
             {fechasDisponibles.map((f) => (
@@ -60,7 +60,7 @@ function Utm() {
       {valor && fechaSeleccionada && (
         <div className="alert alert-success mt-3">
           <strong>Fecha:</strong> {fechaSeleccionada} <br />
-          <strong>Valor UTM:</strong> ${valor.toLocaleString('es-CL')}
+          <strong>Valor UTM (Pesos Chilenos):</strong> ${valor.toLocaleString('es-CL')}
         </div>
       )}
     </div>

@@ -40,7 +40,7 @@ function Ivp() {
   }
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Consulta de IPC (solo fechas con datos)</h2>
+      <h2 className="mb-4">Consulta de IPC</h2>
       {fechasDisponibles.length > 0 ? (
         <div className="mb-3">
           <label className="form-label">Selecciona una fecha:</label>
@@ -60,7 +60,7 @@ function Ivp() {
       {valorUf && selectedFecha && (
         <div className="alert alert-success mt-3">
           <strong>Fecha:</strong> {selectedFecha} <br />
-          <strong>Valor IPC:</strong> ${valorUf.toLocaleString('es-CL')}
+          <strong>Valor IPC (Pesos Chilenos):</strong> ${valorUf.toLocaleString('es-CL')}
         </div>
       )}
     </div>

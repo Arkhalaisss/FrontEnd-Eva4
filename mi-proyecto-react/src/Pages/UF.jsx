@@ -40,7 +40,7 @@ function Uf() {
   }
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Consulta de UF (solo fechas con datos)</h2>
+      <h2 className="mb-4">Consulta de UF </h2>
       {fechasDisponibles.length > 0 ? (
         <div className="mb-3">
           <label className="form-label">Selecciona una fecha:</label>
